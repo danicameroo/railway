@@ -1,5 +1,5 @@
 import express from 'express'
-import session from 'express-session'
+/*import session from 'express-session'
 import engine from 'consolidate';
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
@@ -8,7 +8,7 @@ const advancedOptions = {useNewUrlParser: true, useUnifiedTopology: true}
 import dotenv from 'dotenv'
 import parseArgs from 'yargs/yargs'
 import { fork } from 'child_process'
-const yargs = parseArgs(process.argv.slice(2))
+const yargs = parseArgs(process.argv.slice(2))*/
 
 // modo fork
 
@@ -22,7 +22,7 @@ const yargs = parseArgs(process.argv.slice(2))
 const puerto = process.env.PORT || 8080
 
 
-dotenv.config({
+/*dotenv.config({
     path: './.env'
 })
 
@@ -184,8 +184,14 @@ app.get('/api/random', (req, res) => {
             res.json(result)
         }
     })
-})
+})*/
 
+const app = express()
+const usuario = ["pedro", "martin"]
+app.get('/', (req, res) => {
+    res.json(usuario)
+    
+})
 
 app.listen(puerto, () => {
     console.log(`server escuchando en el puerto ${puerto}`)
