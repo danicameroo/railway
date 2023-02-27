@@ -19,12 +19,7 @@ const yargs = parseArgs(process.argv.slice(2))
 // pm2 start server.js --name serverModoCluster -i max --watch -- 8082
 
 
-const { puerto} = yargs
-    .default({
-        puerto: 8080
-    }).argv
-
-console.log({puerto})
+const puerto = process.env.PORT || 8080
 
 
 dotenv.config({
