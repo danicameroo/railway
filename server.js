@@ -1,31 +1,17 @@
 import express from 'express'
-/*import session from 'express-session'
+import session from 'express-session'
 import engine from 'consolidate';
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import MongoStore from 'connect-mongo'
 const advancedOptions = {useNewUrlParser: true, useUnifiedTopology: true}
 import dotenv from 'dotenv'
-import parseArgs from 'yargs/yargs'
-import { fork } from 'child_process'
-const yargs = parseArgs(process.argv.slice(2))*/
-
-// modo fork
-
-// pm2 start server.js --name serverModoFork --watch -- 8081
-
-// modo cluster (se agrega el -i)
-
-// pm2 start server.js --name serverModoCluster -i max --watch -- 8082
-
 
 const puerto = process.env.PORT || 8080
 
-
-/*dotenv.config({
+dotenv.config({
     path: './.env'
 })
-
 
 const usuarios = []
 
@@ -79,7 +65,6 @@ passport.deserializeUser((username, done) => {
     const usuario = usuarios.find(usuario => usuario.username == username)
     done(null, usuario)
 })
-
 
 const app = express()
 
@@ -159,39 +144,6 @@ app.get('/logout', (req, res) => {
     })
 })
 
-app.get("/info", (req, res) => {
-    res.send(`Servidor express en ${puerto} - <b> PID: ${process.pid}</b> - ${new Date().toLocaleString()}`)
-    const datos = {
-        argumento_de_entrada:  process.cwd(),
-        sistema_operativo:  process.platform,
-        version_de_node: process.version,
-        memoria_total_reservada: process.memoryUsage(),
-        path_de_ejecucion: process.execPath,
-        id: process.pid,
-    }
-
-    res.json(datos)
-})
-
-
-
-app.get('/api/random', (req, res) => {
-    const calculo = fork(path.resolve(process.cwd(), 'calculo.js'))
-    calculo.on('message', result => {
-        if (result == 'listo') {
-            calculo.send('start')
-        } else {
-            res.json(result)
-        }
-    })
-})*/
-
-const app = express()
-const usuario = ["pedro", "martin"]
-app.get('/', (req, res) => {
-    res.json(usuario)
-    
-})
 
 app.listen(puerto, () => {
     console.log(`server escuchando en el puerto ${puerto}`)
